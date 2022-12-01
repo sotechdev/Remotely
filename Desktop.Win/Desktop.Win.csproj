@@ -34,7 +34,6 @@
 
   <ItemGroup>
     <None Remove="Assets\favicon.ico" />
-    <None Remove="Assets\SODesk_Icon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,7 +51,6 @@
 
   <ItemGroup>
     <Resource Include="Assets\favicon.ico" />
-    <Resource Include="Assets\SODesk_Icon.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -195,7 +195,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Remotely_Icon.png" />
+    <Resource Include="Assets\SODesk_Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -43,15 +43,10 @@
     <None Remove="Models\**" />
   </ItemGroup>
   <ItemGroup>
-    <AvaloniaResource Remove="Assets\SODesk_Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="Assets\favicon.ico" />
-    <None Remove="Assets\SODesk_Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\favicon.ico" />
-    <Resource Include="Assets\SODesk_Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.10.15" />
