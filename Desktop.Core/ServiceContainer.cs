@@ -1,9 +1,8 @@
 ﻿using System;
 
-namespace Remotely.Desktop.Core
+namespace Remotely.Desktop.Core;
+
+public class ServiceContainer
 {
-    public class ServiceContainer
-    {
-        public static IServiceProvider Instance { get; set; }
-    }
+    public static IServiceProvider Instance { get; set; }
 }

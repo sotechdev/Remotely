@@ -1,11 +1,11 @@
-﻿using Remotely.Server.Models;
+﻿using SODesk.Server.Models;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
 
-namespace Remotely.Server.Services
+namespace SODesk.Server.Services
 {
     public interface IToastService
     {

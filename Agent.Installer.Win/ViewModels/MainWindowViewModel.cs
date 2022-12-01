@@ -1,8 +1,9 @@
-using Remotely.Agent.Installer.Win.Models;
-using Remotely.Agent.Installer.Win.Services;
-using Remotely.Agent.Installer.Win.Utilities;
-using Remotely.Shared.Utilities;
-using Remotely.Shared.Models;
+using SODesk.Agent.Installer.Win.Models;
+using SODesk.Agent.Installer.Win.Services;
+using SODesk.Agent.Installer.Win.Utilities;
+using SODesk.Shared.Models;
+using SODesk.Shared.Utilities;
+
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -17,9 +18,8 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Net;
 
-namespace Remotely.Agent.Installer.Win.ViewModels
+namespace SODesk.Agent.Installer.Win.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
@@ -117,7 +117,7 @@ namespace Remotely.Agent.Installer.Win.ViewModels
             {
                 return new Executor(param =>
                 {
-                    var logPath = Path.Combine(Path.GetTempPath(), "Remotely_Installer.log");
+                    var logPath = Path.Combine(Path.GetTempPath(), "SODesk_Installer.log");
                     if (File.Exists(logPath))
                     {
                         Process.Start(logPath);
@@ -205,7 +205,7 @@ namespace Remotely.Agent.Installer.Win.ViewModels
                 Progress = arg;
             };
 
-            IsServiceInstalled = ServiceController.GetServices().Any(x => x.ServiceName == "Remotely_Service");
+            IsServiceInstalled = ServiceController.GetServices().Any(x => x.ServiceName == "SODesk_Service");
             if (IsServiceMissing)
             {
                 HeaderMessage = $"Install the {ProductName} service.";
@@ -239,7 +239,7 @@ namespace Remotely.Agent.Installer.Win.ViewModels
                 var connectionInfoPath = Path.Combine(
                Path.GetPathRoot(Environment.SystemDirectory),
                    "Program Files",
-                   "Remotely",
+                   "SODesk",
                    "ConnectionInfo.json");
 
                 if (File.Exists(connectionInfoPath))
@@ -269,7 +269,7 @@ namespace Remotely.Agent.Installer.Win.ViewModels
         {
             try
             {
-                ProductName = "Remotely";
+                ProductName = "SODesk";
 
                 if (!string.IsNullOrWhiteSpace(brandingInfo?.Product))
                 {
@@ -396,7 +396,7 @@ namespace Remotely.Agent.Installer.Win.ViewModels
                     var codeSection = string.Join("", fileName.Skip(i).Take(codeLength));
 
                     if (codeSection.StartsWith("[") &&
-                        codeSection.EndsWith("]") && 
+                        codeSection.EndsWith("]") &&
                         !string.IsNullOrWhiteSpace(ServerUrl))
                     {
                         var relayCode = codeSection.Substring(1, 4);
@@ -424,7 +424,7 @@ namespace Remotely.Agent.Installer.Win.ViewModels
                         {
                             var responseString = await response.Content.ReadAsStringAsync();
                             _brandingInfo = serializer.Deserialize<BrandingInfo>(responseString);
-                            
+
                         }
                     }
                 }
@@ -447,7 +447,7 @@ namespace Remotely.Agent.Installer.Win.ViewModels
             }
             else
             {
-                imageStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Remotely.Agent.Installer.Win.Assets.Remotely_Icon.png");
+                imageStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SODesk.Agent.Installer.Win.Assets.SODesk_Icon.png");
             }
 
             var bitmap = new BitmapImage();
@@ -470,14 +470,14 @@ namespace Remotely.Agent.Installer.Win.ViewModels
                     return;
                 }
 
-                HeaderMessage = "Installing Remotely...";
+                HeaderMessage = "Installing SODesk...";
 
                 if (await Installer.Install(ServerUrl, OrganizationID, DeviceGroup, DeviceAlias, DeviceUuid, CreateSupportShortcut))
                 {
                     IsServiceInstalled = true;
                     Progress = 0;
                     HeaderMessage = "Installation completed.";
-                    StatusMessage = "Remotely has been installed.  You can now close this window.";
+                    StatusMessage = "SODesk has been installed.  You can now close this window.";
                 }
                 else
                 {
@@ -506,14 +506,14 @@ namespace Remotely.Agent.Installer.Win.ViewModels
             {
                 IsReadyState = false;
 
-                HeaderMessage = "Uninstalling Remotely...";
+                HeaderMessage = "Uninstalling SODesk...";
 
                 if (await Installer.Uninstall())
                 {
                     IsServiceInstalled = false;
                     Progress = 0;
                     HeaderMessage = "Uninstall completed.";
-                    StatusMessage = "Remotely has been uninstalled.  You can now close this window.";
+                    StatusMessage = "SODesk has been uninstalled.  You can now close this window.";
                 }
                 else
                 {

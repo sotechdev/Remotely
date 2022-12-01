@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Remotely.Server.Auth;
-using Remotely.Server.Services;
+using SODesk.Server.Auth;
+using SODesk.Server.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.API
+namespace SODesk.Server.API
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -37,27 +37,27 @@ namespace Remotely.Server.API
             {
                 case "WindowsDesktop-x64":
                     {
-                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Win-x64", "Remotely_Desktop.exe");
+                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Win-x64", "SODesk_Desktop.exe");
                         return await GetDesktopFile(filePath);
                     }
                 case "WindowsDesktop-x86":
                     {
-                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Win-x86", "Remotely_Desktop.exe");
+                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Win-x86", "SODesk_Desktop.exe");
                         return await GetDesktopFile(filePath);
                     }
                 case "UbuntuDesktop":
                     {
-                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Linux-x64", "Remotely_Desktop");
+                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Linux-x64", "SODesk_Desktop");
                         return await GetDesktopFile(filePath);
                     }
                 case "MacOS-x64":
                     {
-                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "MacOS-x64", "Remotely_Desktop");
+                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "MacOS-x64", "SODesk_Desktop");
                         return await GetDesktopFile(filePath);
                     }
                 case "MacOS-arm64":
                     {
-                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "MacOS-arm64", "Remotely_Desktop");
+                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "MacOS-arm64", "SODesk_Desktop");
                         return await GetDesktopFile(filePath);
                     }
                 default:
@@ -73,27 +73,27 @@ namespace Remotely.Server.API
             {
                 case "WindowsDesktop-x64":
                     {
-                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Win-x64", "Remotely_Desktop.exe");
+                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Win-x64", "SODesk_Desktop.exe");
                         return await GetDesktopFile(filePath, organizationId);
                     }
                 case "WindowsDesktop-x86":
                     {
-                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Win-x86", "Remotely_Desktop.exe");
+                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Win-x86", "SODesk_Desktop.exe");
                         return await GetDesktopFile(filePath, organizationId);
                     }
                 case "UbuntuDesktop":
                     {
-                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Linux-x64", "Remotely_Desktop");
+                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Linux-x64", "SODesk_Desktop");
                         return await GetDesktopFile(filePath, organizationId);
                     }
                 case "MacOS-x64":
                     {
-                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "MacOS-x64", "Remotely_Desktop");
+                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "MacOS-x64", "SODesk_Desktop");
                         return await GetDesktopFile(filePath);
                     }
                 case "MacOS-arm64":
                     {
-                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "MacOS-arm64", "Remotely_Desktop");
+                        var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "MacOS-arm64", "SODesk_Desktop");
                         return await GetDesktopFile(filePath);
                     }
                 default:
@@ -170,11 +170,11 @@ namespace Remotely.Server.API
                     {
                         case "WindowsInstaller":
                             {
-                                var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Remotely_Installer.exe");
+                                var filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "SODesk_Installer.exe");
                                 var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
                                 var organization = _dataService.GetOrganizationById(organizationId);
                                 var relayCode = organization.RelayCode;
-                                return File(fs, "application/octet-stream", $"Remotely_Install-[{relayCode}].exe");
+                                return File(fs, "application/octet-stream", $"SODesk_Install-[{relayCode}].exe");
                             }
                         // TODO: Remove after a few releases.
                         case "Manjaro-x64":

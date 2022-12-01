@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.Logging;
-using Remotely.Shared.Models;
-using Remotely.Shared.Utilities;
+using SODesk.Shared.Models;
+using SODesk.Shared.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 
-namespace Remotely.Server.Data
+namespace SODesk.Server.Data
 {
     public class AppDb : IdentityDbContext
     {
@@ -35,7 +35,7 @@ namespace Remotely.Server.Data
         public DbSet<ScriptSchedule> ScriptSchedules { get; set; }
         public DbSet<ScriptResult> ScriptResults { get; set; }
         public DbSet<SharedFile> SharedFiles { get; set; }
-        public new DbSet<RemotelyUser> Users { get; set; }
+        public new DbSet<SODeskUser> Users { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -49,13 +49,13 @@ namespace Remotely.Server.Data
 
             base.OnModelCreating(builder);
 
-            builder.Entity<IdentityUser>().ToTable("RemotelyUsers");
+            builder.Entity<IdentityUser>().ToTable("SODeskUsers");
 
             builder.Entity<Organization>()
                 .HasMany(x => x.Devices)
                 .WithOne(x => x.Organization);
             builder.Entity<Organization>()
-                .HasMany(x => x.RemotelyUsers)
+                .HasMany(x => x.SODeskUsers)
                 .WithOne(x => x.Organization);
             builder.Entity<Organization>()
                 .HasMany(x => x.EventLogs)
@@ -88,29 +88,29 @@ namespace Remotely.Server.Data
                 .HasMany(x => x.SavedScripts)
                 .WithOne(x => x.Organization);
 
-            builder.Entity<RemotelyUser>()
+            builder.Entity<SODeskUser>()
                .HasOne(x => x.Organization)
-               .WithMany(x => x.RemotelyUsers);
+               .WithMany(x => x.SODeskUsers);
 
-            builder.Entity<RemotelyUser>()
+            builder.Entity<SODeskUser>()
                 .HasMany(x => x.DeviceGroups)
                 .WithMany(x => x.Users);
-            builder.Entity<RemotelyUser>()
+            builder.Entity<SODeskUser>()
                 .HasMany(x => x.Alerts)
                 .WithOne(x => x.User);
-            builder.Entity<RemotelyUser>()
+            builder.Entity<SODeskUser>()
                 .Property(x => x.UserOptions)
                 .HasConversion(
                     x => JsonSerializer.Serialize(x, (JsonSerializerOptions)null),
-                    x => JsonSerializer.Deserialize<RemotelyUserOptions>(x, (JsonSerializerOptions)null));
-            builder.Entity<RemotelyUser>()
+                    x => JsonSerializer.Deserialize<SODeskUserOptions>(x, (JsonSerializerOptions)null));
+            builder.Entity<SODeskUser>()
                 .HasMany(x => x.SavedScripts)
                 .WithOne(x => x.Creator);
-            builder.Entity<RemotelyUser>()
+            builder.Entity<SODeskUser>()
                 .HasMany(x => x.ScriptSchedules)
                 .WithOne(x => x.Creator);
 
-            builder.Entity<RemotelyUser>()
+            builder.Entity<SODeskUser>()
                 .HasIndex(x => x.UserName);
 
             builder.Entity<Device>()

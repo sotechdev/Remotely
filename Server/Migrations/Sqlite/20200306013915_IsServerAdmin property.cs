@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Remotely.Server.Migrations.Sqlite
+namespace SODesk.Server.Migrations.Sqlite
 {
     public partial class IsServerAdminproperty : Migration
     {
@@ -8,7 +8,7 @@ namespace Remotely.Server.Migrations.Sqlite
         {
             migrationBuilder.AddColumn<bool>(
                 name: "IsServerAdmin",
-                table: "RemotelyUsers",
+                table: "SODeskUsers",
                 nullable: true);
         }
 
@@ -16,7 +16,7 @@ namespace Remotely.Server.Migrations.Sqlite
         {
             migrationBuilder.DropColumn(
                 name: "IsServerAdmin",
-                table: "RemotelyUsers");
+                table: "SODeskUsers");
         }
     }
 }

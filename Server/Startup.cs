@@ -14,21 +14,21 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Npgsql;
-using Remotely.Server.Data;
-using Remotely.Server.Hubs;
-using Remotely.Server.Services;
-using Remotely.Shared.Models;
-using Remotely.Server.Areas.Identity;
+using SODesk.Server.Data;
+using SODesk.Server.Hubs;
+using SODesk.Server.Services;
+using SODesk.Shared.Models;
+using SODesk.Server.Areas.Identity;
 using System;
 using System.IO;
 using System.Linq;
 using System.Net;
 using Microsoft.AspNetCore.Components.Server.Circuits;
 using Microsoft.AspNetCore.Authorization;
-using Remotely.Server.Auth;
+using SODesk.Server.Auth;
 using Microsoft.AspNetCore.Http.Extensions;
 
-namespace Remotely.Server
+namespace SODesk.Server
 {
     public class Startup
     {
@@ -82,7 +82,7 @@ namespace Remotely.Server
                 });
             }
 
-            services.AddIdentity<RemotelyUser, IdentityRole>(options =>
+            services.AddIdentity<SODeskUser, IdentityRole>(options =>
             {
                 options.Stores.MaxLengthForKeys = 128;
                 options.Password.RequireNonAlphanumeric = false;
@@ -103,7 +103,7 @@ namespace Remotely.Server
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<RemotelyUser>>();
+            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<SODeskUser>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             var trustedOrigins = Configuration.GetSection("ApplicationOptions:TrustedCorsOrigins").Get<string[]>();
@@ -149,7 +149,7 @@ namespace Remotely.Server
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Remotely API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SODesk API", Version = "v1" });
             });
 
 
@@ -213,7 +213,7 @@ namespace Remotely.Server
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Remotely API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "SODesk API V1");
             });
 
             app.UseRouting();

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Remotely.Desktop.Core.Interfaces
+namespace Remotely.Desktop.Core.Interfaces;
+
+public interface IClipboardService
 {
-    public interface IClipboardService
-    {
-        event EventHandler<string> ClipboardTextChanged;
+    event EventHandler<string> ClipboardTextChanged;
 
-        void BeginWatching();
+    void BeginWatching();
 
-        Task SetText(string clipboardText);
-    }
+    Task SetText(string clipboardText);
 }

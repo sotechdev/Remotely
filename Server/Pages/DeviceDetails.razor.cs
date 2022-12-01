@@ -1,19 +1,19 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web;
-using Remotely.Server.Components;
-using Remotely.Server.Hubs;
-using Remotely.Server.Services;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Models;
-using Remotely.Shared.Utilities;
+using SODesk.Server.Components;
+using SODesk.Server.Hubs;
+using SODesk.Server.Services;
+using SODesk.Shared.Enums;
+using SODesk.Shared.Models;
+using SODesk.Shared.Utilities;
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.Pages
+namespace SODesk.Server.Pages
 {
     public partial class DeviceDetails : AuthComponentBase
     {

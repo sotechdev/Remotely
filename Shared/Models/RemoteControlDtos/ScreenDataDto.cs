@@ -1,8 +1,8 @@
-﻿using Remotely.Shared.Enums;
+﻿using SODesk.Shared.Enums;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace Remotely.Shared.Models.RemoteControlDtos
+namespace SODesk.Shared.Models.RemoteControlDtos
 {
     [DataContract]
     public class ScreenDataDto : BaseDto

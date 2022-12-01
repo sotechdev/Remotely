@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
-using Remotely.Shared.Extensions;
+using SODesk.Shared.Extensions;
 
-namespace Remotely.Shared.Tests
+namespace SODesk.Shared.Tests
 {
     [TestClass]
     public class StreamExtensionsTests

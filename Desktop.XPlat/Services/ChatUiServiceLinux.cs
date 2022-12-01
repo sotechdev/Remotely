@@ -1,10 +1,10 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Threading;
-using Remotely.Desktop.Core.Interfaces;
-using Remotely.Desktop.XPlat.Controls;
-using Remotely.Desktop.XPlat.ViewModels;
-using Remotely.Desktop.XPlat.Views;
-using Remotely.Shared.Models;
+using SODesk.Desktop.Core.Interfaces;
+using SODesk.Desktop.XPlat.Controls;
+using SODesk.Desktop.XPlat.ViewModels;
+using SODesk.Desktop.XPlat.Views;
+using SODesk.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Remotely.Desktop.XPlat.Services
+namespace SODesk.Desktop.XPlat.Services
 {
     public class ChatUiServiceLinux : IChatUiService
     {

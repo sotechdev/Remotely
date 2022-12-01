@@ -1,16 +1,16 @@
-﻿using Remotely.Desktop.Core.Interfaces;
-using Remotely.Shared.Models;
-using Remotely.Shared.Utilities;
+﻿using SODesk.Desktop.Core.Interfaces;
+using SODesk.Shared.Models;
+using SODesk.Shared.Utilities;
 using System;
 using System.IO;
 using System.Text.Json;
 
-namespace Remotely.Desktop.Win.Services
+namespace SODesk.Desktop.Win.Services
 {
 
     public class ConfigServiceWin : IConfigService
     {
-        private static readonly string _configFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Remotely");
+        private static readonly string _configFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SODesk");
         private static readonly string _configFile = Path.Combine(_configFolder, "Config.json");
 
         public DesktopAppConfig GetConfig()

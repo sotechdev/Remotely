@@ -1,8 +1,8 @@
 <#
 .SYNOPSIS
-   Publishes the Remotely clients.
+   Publishes the SODesk clients.
 .DESCRIPTION
-   Publishes the Remotely clients.
+   Publishes the SODesk clients.
    To deploy the server, supply the following arguments: -rid win10-x64 -outdir path\to\dir -hostname https://mysite.mydomain.com
 .COPYRIGHT
    Copyright 2020 Translucency Software.  All rights reserved.
@@ -147,7 +147,7 @@ dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion -p:Publ
 &"$MSBuildPath" "$Root\Desktop.Win" -t:Restore -t:Publish -p:PublishProfile="ClickOnce-x64.pubxml" -p:Configuration=Release -p:Platform=x64 -p:ApplicationVersion=$CurrentVersion -p:Version=$CurrentVersion -p:FileVersion=$CurrentVersion -p:PublishDir="$Root\Server\wwwroot\Content\Win-x64\ClickOnce\"
 
 if ($SignAssemblies) {
-    &"$Root\Utilities\signtool.exe" sign /f "$CertificatePath" /p $CertificatePassword /t http://timestamp.digicert.com "$Root\Server\wwwroot\Content\Win-x64\Remotely_Desktop.exe"
+    &"$Root\Utilities\signtool.exe" sign /f "$CertificatePath" /p $CertificatePassword /t http://timestamp.digicert.com "$Root\Server\wwwroot\Content\Win-x64\SODesk_Desktop.exe"
 }
 
 
@@ -156,38 +156,38 @@ dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion -p:Publ
 &"$MSBuildPath" "$Root\Desktop.Win" -t:Restore -t:Publish -p:PublishProfile="ClickOnce-x86.pubxml" -p:Configuration=Release -p:Platform=x86 -p:ApplicationVersion=$CurrentVersion -p:Version=$CurrentVersion -p:FileVersion=$CurrentVersion -p:PublishDir="$Root\Server\wwwroot\Content\Win-x86\ClickOnce\"
 
 if ($SignAssemblies) {
-    &"$Root\Utilities\signtool.exe" sign /f "$CertificatePath" /p $CertificatePassword /t http://timestamp.digicert.com "$Root\Server\wwwroot\Content\Win-x86\Remotely_Desktop.exe"
+    &"$Root\Utilities\signtool.exe" sign /f "$CertificatePath" /p $CertificatePassword /t http://timestamp.digicert.com "$Root\Server\wwwroot\Content\Win-x86\SODesk_Desktop.exe"
 }
 
 # Build installer.
 &"$MSBuildPath" "$Root\Agent.Installer.Win" /t:Restore 
 &"$MSBuildPath" "$Root\Agent.Installer.Win" /t:Build /p:Configuration=Release /p:Platform=AnyCPU /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion
-Copy-Item -Path "$Root\Agent.Installer.Win\bin\Release\Remotely_Installer.exe" -Destination "$Root\Server\wwwroot\Content\Remotely_Installer.exe" -Force
+Copy-Item -Path "$Root\Agent.Installer.Win\bin\Release\SODesk_Installer.exe" -Destination "$Root\Server\wwwroot\Content\SODesk_Installer.exe" -Force
 if ($SignAssemblies) {
-    &"$Root\Utilities\signtool.exe" sign /f "$CertificatePath" /p $CertificatePassword /t http://timestamp.digicert.com "$Root\Server\wwwroot\Content\Remotely_Installer.exe"
+    &"$Root\Utilities\signtool.exe" sign /f "$CertificatePath" /p $CertificatePassword /t http://timestamp.digicert.com "$Root\Server\wwwroot\Content\SODesk_Installer.exe"
 }
 
 # Compress Core clients.
 $PublishDir =  "$Root\Agent\bin\Release\net6.0\win10-x64\publish"
-Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Remotely-Win10-x64.zip" -Force
-while ((Test-Path -Path "$PublishDir\Remotely-Win10-x64.zip") -eq $false){
+Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\SODesk-Win10-x64.zip" -Force
+while ((Test-Path -Path "$PublishDir\SODesk-Win10-x64.zip") -eq $false){
     Start-Sleep -Seconds 1
 }
-Move-Item -Path "$PublishDir\Remotely-Win10-x64.zip" -Destination "$Root\Server\wwwroot\Content\Remotely-Win10-x64.zip" -Force
+Move-Item -Path "$PublishDir\SODesk-Win10-x64.zip" -Destination "$Root\Server\wwwroot\Content\SODesk-Win10-x64.zip" -Force
 
 $PublishDir =  "$Root\Agent\bin\Release\net6.0\win10-x86\publish"
-Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Remotely-Win10-x86.zip" -Force
-while ((Test-Path -Path "$PublishDir\Remotely-Win10-x86.zip") -eq $false){
+Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\SODesk-Win10-x86.zip" -Force
+while ((Test-Path -Path "$PublishDir\SODesk-Win10-x86.zip") -eq $false){
     Start-Sleep -Seconds 1
 }
-Move-Item -Path "$PublishDir\Remotely-Win10-x86.zip" -Destination "$Root\Server\wwwroot\Content\Remotely-Win10-x86.zip" -Force
+Move-Item -Path "$PublishDir\SODesk-Win10-x86.zip" -Destination "$Root\Server\wwwroot\Content\SODesk-Win10-x86.zip" -Force
 
 $PublishDir =  "$Root\Agent\bin\Release\net6.0\linux-x64\publish"
-Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Remotely-Linux.zip" -Force
-while ((Test-Path -Path "$PublishDir\Remotely-Linux.zip") -eq $false){
+Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\SODesk-Linux.zip" -Force
+while ((Test-Path -Path "$PublishDir\SODesk-Linux.zip") -eq $false){
     Start-Sleep -Seconds 1
 }
-Move-Item -Path "$PublishDir\Remotely-Linux.zip" -Destination "$Root\Server\wwwroot\Content\Remotely-Linux.zip" -Force
+Move-Item -Path "$PublishDir\SODesk-Linux.zip" -Destination "$Root\Server\wwwroot\Content\SODesk-Linux.zip" -Force
 
 
 

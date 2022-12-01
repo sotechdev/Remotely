@@ -3,7 +3,7 @@ using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Net;
 
-namespace Remotely.Server.Attributes
+namespace SODesk.Server.Attributes
 {
     [AttributeUsage(AttributeTargets.Method)]
     public class ActionRateLimiterAttribute : ActionFilterAttribute

@@ -1,8 +1,8 @@
-﻿using Remotely.Shared.Enums;
+﻿using SODesk.Shared.Enums;
 using System;
 using System.Diagnostics;
 
-namespace Remotely.Shared.Utilities
+namespace SODesk.Shared.Utilities
 {
     public static class EnvironmentHelper
     {
@@ -13,10 +13,10 @@ namespace Remotely.Shared.Utilities
                 switch (Platform)
                 {
                     case Platform.Windows:
-                        return "Remotely_Agent.exe";
+                        return "SODesk_Agent.exe";
                     case Platform.Linux:
                     case Platform.MacOS:
-                        return "Remotely_Agent";
+                        return "SODesk_Agent";
                     default:
                         throw new PlatformNotSupportedException();
                 }
@@ -30,10 +30,10 @@ namespace Remotely.Shared.Utilities
                 switch (Platform)
                 {
                     case Platform.Windows:
-                        return "Remotely_Desktop.exe";
+                        return "SODesk_Desktop.exe";
                     case Platform.Linux:
                     case Platform.MacOS:
-                        return "Remotely_Desktop";
+                        return "SODesk_Desktop";
                     default:
                         throw new PlatformNotSupportedException();
                 }

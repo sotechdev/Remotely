@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
-using Remotely.Server.Pages;
-using Remotely.Server.Services;
-using Remotely.Shared.Models;
-using Remotely.Shared.Utilities;
+using SODesk.Server.Pages;
+using SODesk.Server.Services;
+using SODesk.Shared.Models;
+using SODesk.Shared.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.Components.Scripts
+namespace SODesk.Server.Components.Scripts
 {
     [Authorize]
     public partial class ScriptSchedules : AuthComponentBase

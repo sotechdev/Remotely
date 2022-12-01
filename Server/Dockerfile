@@ -21,13 +21,13 @@ RUN \
 RUN \
   mkdir -p /var/www/remotely && \
   mkdir /config && \
-  wget -q https://github.com/immense/Remotely/releases/latest/download/Remotely_Server_Linux-x64.zip && \
-  unzip -o Remotely_Server_Linux-x64.zip -d /var/www/remotely && \
-  rm Remotely_Server_Linux-x64.zip
+  wget -q https://github.com/immense/SODesk/releases/latest/download/SODesk_Server_Linux-x64.zip && \
+  unzip -o SODesk_Server_Linux-x64.zip -d /var/www/remotely && \
+  rm SODesk_Server_Linux-x64.zip
 
 RUN \
   mkdir -p /remotely-data && \
-  sed -i 's/DataSource=Remotely.db/DataSource=\/remotely-data\/Remotely.db/' /var/www/remotely/appsettings.json
+  sed -i 's/DataSource=SODesk.db/DataSource=\/remotely-data\/SODesk.db/' /var/www/remotely/appsettings.json
 
 VOLUME "/remotely-data"
 

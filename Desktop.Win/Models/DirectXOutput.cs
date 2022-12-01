@@ -1,10 +1,10 @@
-﻿using Remotely.Shared.Utilities;
+﻿using SODesk.Shared.Utilities;
 using SharpDX.Direct3D11;
 using SharpDX.DXGI;
 using System;
 using System.Drawing;
 
-namespace Remotely.Desktop.Win.Models
+namespace SODesk.Desktop.Win.Models
 {
     public class DirectXOutput : IDisposable
     {

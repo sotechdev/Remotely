@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using Remotely.Server.Models;
-using Remotely.Server.Services;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Models;
+using SODesk.Server.Models;
+using SODesk.Server.Services;
+using SODesk.Shared.Enums;
+using SODesk.Shared.Models;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.Hubs
+namespace SODesk.Server.Hubs
 {
     public class CasterHub : Hub
     {

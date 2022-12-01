@@ -3,13 +3,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Remotely.Desktop.Core;
-using Remotely.Desktop.Core.Interfaces;
-using Remotely.Desktop.Core.Services;
-using Remotely.Desktop.Core.Utilities;
-using Remotely.Desktop.Win.Services;
-using Remotely.Shared.Models;
-using Remotely.Shared.Models.RemoteControlDtos;
+using SODesk.Desktop.Core;
+using SODesk.Desktop.Core.Interfaces;
+using SODesk.Desktop.Core.Services;
+using SODesk.Desktop.Core.Utilities;
+using SODesk.Desktop.Win.Services;
+using SODesk.Shared.Models;
+using SODesk.Shared.Models.RemoteControlDtos;
 using SkiaSharp;
 using SkiaSharp.Views.Desktop;
 using System;
@@ -22,7 +22,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Remotely.Tests
+namespace SODesk.Tests
 {
     [TestClass]
     public class ManualTests
@@ -351,7 +351,7 @@ namespace Remotely.Tests
 
         private SKBitmap GetImage(string imageFileName)
         {
-            using var mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream($"Remotely.Desktop.Win.Tests.Resources.{imageFileName}.jpg");
+            using var mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream($"SODesk.Desktop.Win.Tests.Resources.{imageFileName}.jpg");
             var resourceImage = (Bitmap)Bitmap.FromStream(mrs);
 
             if (resourceImage.PixelFormat != PixelFormat.Format32bppArgb)

@@ -1,22 +1,22 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using Remotely.Server.Hubs;
-using Remotely.Server.Models;
-using Remotely.Server.Services;
-using Remotely.Shared.Models;
+using SODesk.Server.Hubs;
+using SODesk.Server.Models;
+using SODesk.Server.Services;
+using SODesk.Shared.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.API
+namespace SODesk.Server.API
 {
     [Route("api/[controller]")]
     [ApiController]
     [Obsolete("This controller is here only for legacy purposes.  For new integrations, use API tokens.")]
     public class LoginController : ControllerBase
     {
-        public LoginController(SignInManager<RemotelyUser> signInManager,
+        public LoginController(SignInManager<SODeskUser> signInManager,
             IDataService dataService,
             IApplicationConfig appConfig,
             IHubContext<CasterHub> casterHubContext,
@@ -29,7 +29,7 @@ namespace Remotely.Server.API
             ViewerHubContext = viewerHubContext;
         }
 
-        private SignInManager<RemotelyUser> SignInManager { get; }
+        private SignInManager<SODeskUser> SignInManager { get; }
         private IDataService DataService { get; }
         public IApplicationConfig AppConfig { get; }
         private IHubContext<CasterHub> CasterHubContext { get; }

@@ -1,11 +1,11 @@
-﻿using Remotely.Server.Components.TreeView;
-using Remotely.Shared.Models;
+﻿using SODesk.Server.Components.TreeView;
+using SODesk.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.Components.Scripts
+namespace SODesk.Server.Components.Scripts
 {
     public class ScriptTreeNode
     {

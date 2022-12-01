@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Identity;
-using Remotely.Server.Services;
-using Remotely.Shared.Models;
+using SODesk.Server.Services;
+using SODesk.Shared.Models;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.Components
+namespace SODesk.Server.Components
 {
     public class AuthComponentBase : ComponentBase
     {
@@ -19,7 +19,7 @@ namespace Remotely.Server.Components
 
         public bool IsAuthenticated { get; private set; }
 
-        public RemotelyUser User { get; private set; }
+        public SODeskUser User { get; private set; }
 
         public string Username { get; private set; }
 

@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Models;
+using SODesk.Shared.Enums;
+using SODesk.Shared.Models;
 using System;
 
-namespace Remotely.Server.Services
+namespace SODesk.Server.Services
 {
     public interface IApplicationConfig
     {

@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Remotely.Shared.Utilities
+namespace SODesk.Shared.Utilities
 {
     public static class TaskHelper
     {

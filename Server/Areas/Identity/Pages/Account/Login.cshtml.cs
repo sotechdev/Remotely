@@ -11,23 +11,23 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using Remotely.Shared.Models;
-using Remotely.Server.Services;
+using SODesk.Shared.Models;
+using SODesk.Server.Services;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
 
-namespace Remotely.Server.Areas.Identity.Pages.Account
+namespace SODesk.Server.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly UserManager<RemotelyUser> _userManager;
-        private readonly SignInManager<RemotelyUser> _signInManager;
+        private readonly UserManager<SODeskUser> _userManager;
+        private readonly SignInManager<SODeskUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
         private readonly IDataService _dataService;
 
-        public LoginModel(SignInManager<RemotelyUser> signInManager, 
-            UserManager<RemotelyUser> userManager,
+        public LoginModel(SignInManager<SODeskUser> signInManager, 
+            UserManager<SODeskUser> userManager,
             ILogger<LoginModel> logger,
             IDataService dataService)
         {

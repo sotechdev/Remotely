@@ -1,9 +1,8 @@
-﻿namespace Remotely.Desktop.Core.Enums
+﻿namespace Remotely.Desktop.Core.Enums;
+
+public enum AppMode
 {
-    public enum AppMode
-    {
-        Unattended,
-        Normal,
-        Chat
-    }
+    Unattended,
+    Normal,
+    Chat
 }

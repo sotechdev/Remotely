@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Security.Cryptography;
 
-namespace Remotely.Shared.Utilities
+namespace SODesk.Shared.Utilities
 {
     public class RandomGenerator
     {

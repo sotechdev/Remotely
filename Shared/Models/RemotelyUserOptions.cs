@@ -1,9 +1,9 @@
-﻿using Remotely.Shared.Enums;
+﻿using SODesk.Shared.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace Remotely.Shared.Models
+namespace SODesk.Shared.Models
 {
-    public class RemotelyUserOptions
+    public class SODeskUserOptions
     {
         [Display(Name = "Display Name")]
         [StringLength(100)]

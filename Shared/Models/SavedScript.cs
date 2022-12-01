@@ -1,4 +1,4 @@
-﻿using Remotely.Shared.Enums;
+﻿using SODesk.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Remotely.Shared.Models
+namespace SODesk.Shared.Models
 {
     public class SavedScript
     {
@@ -16,7 +16,7 @@ namespace Remotely.Shared.Models
         public string Content { get; set; }
 
         [JsonIgnore]
-        public RemotelyUser Creator { get; set; }
+        public SODeskUser Creator { get; set; }
 
         public string CreatorId { get; set; }
 

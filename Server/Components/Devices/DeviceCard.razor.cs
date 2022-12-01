@@ -3,15 +3,15 @@ using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
-using Remotely.Server.Auth;
-using Remotely.Server.Enums;
-using Remotely.Server.Hubs;
-using Remotely.Server.Models;
-using Remotely.Server.Services;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Models;
-using Remotely.Shared.Utilities;
-using Remotely.Shared.ViewModels;
+using SODesk.Server.Auth;
+using SODesk.Server.Enums;
+using SODesk.Server.Hubs;
+using SODesk.Server.Models;
+using SODesk.Server.Services;
+using SODesk.Shared.Enums;
+using SODesk.Shared.Models;
+using SODesk.Shared.Utilities;
+using SODesk.Shared.ViewModels;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.Components.Devices
+namespace SODesk.Server.Components.Devices
 {
     public partial class DeviceCard : AuthComponentBase, IDisposable
     {

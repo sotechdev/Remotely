@@ -1,40 +1,39 @@
 ﻿using System.IO;
 using System.Threading;
 
-namespace Remotely.Desktop.Core.ViewModels
+namespace Remotely.Desktop.Core.ViewModels;
+
+public class FileUpload : ViewModelBase
 {
-    public class FileUpload : ViewModelBase
+    private string _filePath;
+    private double _percentProgress;
+
+    public CancellationTokenSource CancellationTokenSource { get; } = new CancellationTokenSource();
+
+    public string DisplayName => Path.GetFileName(FilePath);
+
+    public string FilePath
     {
-        private string _filePath;
-        private double _percentProgress;
-
-        public CancellationTokenSource CancellationTokenSource { get; } = new CancellationTokenSource();
-
-        public string DisplayName => Path.GetFileName(FilePath);
-
-        public string FilePath
+        get
         {
-            get
-            {
-                return _filePath;
-            }
-            set
-            {
-                _filePath = value;
-                FirePropertyChanged();
-            }
+            return _filePath;
         }
-        public double PercentProgress
+        set
         {
-            get
-            {
-                return _percentProgress;
-            }
-            set
-            {
-                _percentProgress = value;
-                FirePropertyChanged();
-            }
+            _filePath = value;
+            FirePropertyChanged();
+        }
+    }
+    public double PercentProgress
+    {
+        get
+        {
+            return _percentProgress;
+        }
+        set
+        {
+            _percentProgress = value;
+            FirePropertyChanged();
         }
     }
 }

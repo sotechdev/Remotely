@@ -1,17 +1,17 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Remotely.Server.Hubs;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Models;
-using Remotely.Shared.Utilities;
+using SODesk.Server.Hubs;
+using SODesk.Shared.Enums;
+using SODesk.Shared.Models;
+using SODesk.Shared.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.Services
+namespace SODesk.Server.Services
 {
     public class ScriptScheduler : IHostedService, IDisposable
     {

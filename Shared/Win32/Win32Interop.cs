@@ -1,14 +1,14 @@
-﻿using Remotely.Shared.Models;
+﻿using SODesk.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using static Remotely.Shared.Win32.ADVAPI32;
-using static Remotely.Shared.Win32.User32;
+using static SODesk.Shared.Win32.ADVAPI32;
+using static SODesk.Shared.Win32.User32;
 
-namespace Remotely.Shared.Win32
+namespace SODesk.Shared.Win32
 {
     // TODO: Use https://github.com/dotnet/pinvoke for all p/invokes.  Remove signatures from this project.
     public class Win32Interop

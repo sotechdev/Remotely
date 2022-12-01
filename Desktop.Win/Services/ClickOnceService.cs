@@ -1,8 +1,8 @@
-﻿using Remotely.Desktop.Core;
-using Remotely.Desktop.Core.Services;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Models;
-using Remotely.Shared.Utilities;
+﻿using SODesk.Desktop.Core;
+using SODesk.Desktop.Core.Services;
+using SODesk.Shared.Enums;
+using SODesk.Shared.Models;
+using SODesk.Shared.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Xml;
 
-namespace Remotely.Desktop.Win.Services
+namespace SODesk.Desktop.Win.Services
 {
     public interface IClickOnceService
     {

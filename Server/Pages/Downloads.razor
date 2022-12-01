@@ -4,7 +4,7 @@
 
 @inject AuthenticationStateProvider AuthProvider
 @inject IDataService DataService
-@inject UserManager<RemotelyUser> UserManager
+@inject UserManager<SODeskUser> UserManager
 @inject IWebHostEnvironment HostEnv
 @inject NavigationManager NavManager
 @inject ILogger<Downloads> Logger 
@@ -103,16 +103,16 @@
             <p>
                 <a target="_blank" href="/API/ClientDownloads/WindowsInstaller">Windows Installer (x64/x86)</a>
                 <br />
-                <a target="_blank" href="/Content/Remotely-Win10-x64.zip">Windows x64 Files Only</a>
+                <a target="_blank" href="/Content/SODesk-Win10-x64.zip">Windows x64 Files Only</a>
                 <br />
-                <a target="_blank" href="/Content/Remotely-Win10-x86.zip">Windows x86 Files Only</a>
+                <a target="_blank" href="/Content/SODesk-Win10-x86.zip">Windows x86 Files Only</a>
             </p>
 
             <p>
                 <div class="small">Example Quiet Install:</div>
                 
                 <code class="label label-default small">
-                    Remotely_Installer.exe
+                    SODesk_Installer.exe
                     -install
                     -quiet
                     -organizationid "0b3d706b-9c5d-41e6-8ae9-5720d16324e6"
@@ -122,25 +122,25 @@
             <p>
                 <div class="small">Example Quiet Uninstall:</div>
 
-                <code class="label label-default small">Remotely_Installer.exe -uninstall -quiet</code>
+                <code class="label label-default small">SODesk_Installer.exe -uninstall -quiet</code>
             </p>
             <p>
                 <div class="small">Example Local Install:</div>
                
                 <code class="label label-default small">
-                    Remotely_Installer.exe
+                    SODesk_Installer.exe
                     -install
                     -quiet
                     -organizationid "0b3d706b-9c5d-41e6-8ae9-5720d16324e6"
                     -serverurl "https://remotely.mytechshop.com"
-                    -path "[path]\Remotely-Win10-x64.zip"
+                    -path "[path]\SODesk-Win10-x64.zip"
                 </code>
             </p>
             <p>
                 <div class="small">All Override Options:</div>
                 
                 <code class="label label-default small">
-                    Remotely_Installer.exe -install -quiet -supportshortcut
+                    SODesk_Installer.exe -install -quiet -supportshortcut
                     -organizationid "0b3d706b-9c5d-41e6-8ae9-5720d16324e6"
                     -serverurl "https://remotely.mytechshop.com"
                     -devicegroup "Customer Group 1"
@@ -157,7 +157,7 @@
                 <br />
                 <a target="_blank" href="/API/ClientDownloads/ManjaroInstaller-x64">Manjaro x64 Bash Installer</a>
                 <br />
-                <a target="_blank" href="/Content/Remotely-Linux.zip">Linux x64 Files Only</a>
+                <a target="_blank" href="/Content/SODesk-Linux.zip">Linux x64 Files Only</a>
             </p>
             <p>
                 <div class="small">Example Install:</div>
@@ -167,7 +167,7 @@
             <p>
                 <div class="small">Example Local Install:</div>
               
-                <code class="label label-default small">sudo [path]/Install-Ubuntu-x64.sh --path [path]/Remotely-Linux.zip</code>
+                <code class="label label-default small">sudo [path]/Install-Ubuntu-x64.sh --path [path]/SODesk-Linux.zip</code>
             </p>
             <p>
                 <div class="small">Uninstall:</div>
@@ -181,14 +181,14 @@
             <p>
                 <a target="_blank" href="/API/ClientDownloads/MacOSInstaller-x64">macOS x64 Bash Installer</a>
                 <br />
-                <a target="_blank" href="/Content/Remotely-MacOS-x64.zip">macOS x64 Files Only</a>
+                <a target="_blank" href="/Content/SODesk-MacOS-x64.zip">macOS x64 Files Only</a>
             </p>
 
             @*<strong>macOS arm64 (11.01)</strong>
             <p>
                 <a target="_blank" href="/API/ClientDownloads/MacOSInstaller-arm64">macOS arm64 Bash Installer</a>
                 <br />
-                <a target="_blank" href="/Content/Remotely-MacOS-arm64.zip">macOS arm64 Files Only</a>
+                <a target="_blank" href="/Content/SODesk-MacOS-arm64.zip">macOS arm64 Files Only</a>
             </p>*@
 
             <p>
@@ -199,7 +199,7 @@
             <p>
                 <div class="small">Example Local Install:</div>
                
-                <code class="label label-default small">sudo [path]/Install-MacOS-x64.sh --path [path]/Remotely-MacOS-x64.zip</code>
+                <code class="label label-default small">sudo [path]/Install-MacOS-x64.sh --path [path]/SODesk-MacOS-x64.zip</code>
             </p>
             <p>
                 <div class="small">Example Uninstall:</div>
@@ -238,7 +238,7 @@
             "Content",
             "Win-x64",
             "ClickOnce",
-            "Remotely_Desktop.application");
+            "SODesk_Desktop.application");
 
         try
         {

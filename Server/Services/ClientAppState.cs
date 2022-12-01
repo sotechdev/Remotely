@@ -1,13 +1,13 @@
-﻿using Remotely.Server.Enums;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Models;
-using Remotely.Shared.ViewModels;
+﻿using SODesk.Server.Enums;
+using SODesk.Shared.Enums;
+using SODesk.Shared.Models;
+using SODesk.Shared.ViewModels;
 using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.Services
+namespace SODesk.Server.Services
 {
     public interface IClientAppState : INotifyPropertyChanged, IInvokePropertyChanged
     {

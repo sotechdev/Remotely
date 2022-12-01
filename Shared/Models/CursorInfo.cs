@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Remotely.Shared.Models
+namespace SODesk.Shared.Models
 {
     public class CursorInfo
     {

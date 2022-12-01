@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Forms;
 
-namespace Remotely.Desktop.Win.Views
+namespace SODesk.Desktop.Win.Views
 {
     /// <summary>
     /// Interaction logic for FileTransferWindow.xaml

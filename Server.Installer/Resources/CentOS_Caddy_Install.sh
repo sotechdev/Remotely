@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Thanks for trying Remotely!"
+echo "Thanks for trying SODesk!"
 echo
 
 
@@ -16,7 +16,7 @@ do
 done
 
 if [ -z "$AppRoot" ]; then
-    read -p "Enter path where the Remotely server files should be installed (typically /var/www/remotely): " AppRoot
+    read -p "Enter path where the SODesk server files should be installed (typically /var/www/remotely): " AppRoot
     if [ -z "$AppRoot" ]; then
         AppRoot="/var/www/remotely"
     fi
@@ -26,9 +26,9 @@ if [ -z "$HostName" ]; then
     read -p "Enter server host (e.g. remotely.yourdomainname.com): " HostName
 fi
 
-chmod +x "$AppRoot/Remotely_Server"
+chmod +x "$AppRoot/SODesk_Server"
 
-echo "Using $AppRoot as the Remotely website's content directory."
+echo "Using $AppRoot as the SODesk website's content directory."
 
 yum update
 yum -y install curl
@@ -72,11 +72,11 @@ echo "$caddyConfig" > /etc/caddy/Caddyfile
 # Create service.
 
 serviceConfig="[Unit]
-Description=Remotely Server
+Description=SODesk Server
 
 [Service]
 WorkingDirectory=$AppRoot
-ExecStart=/usr/bin/dotnet $AppRoot/Remotely_Server.dll
+ExecStart=/usr/bin/dotnet $AppRoot/SODesk_Server.dll
 Restart=always
 # Restart service after 10 seconds if the dotnet service crashes:
 RestartSec=10

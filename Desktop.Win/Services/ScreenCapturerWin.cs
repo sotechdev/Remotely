@@ -22,11 +22,11 @@
 // THE SOFTWARE.
 
 using Microsoft.Win32;
-using Remotely.Desktop.Core.Interfaces;
-using Remotely.Desktop.Core.Utilities;
-using Remotely.Desktop.Win.Models;
-using Remotely.Shared.Utilities;
-using Remotely.Shared.Win32;
+using SODesk.Desktop.Core.Interfaces;
+using SODesk.Desktop.Core.Utilities;
+using SODesk.Desktop.Win.Models;
+using SODesk.Shared.Utilities;
+using SODesk.Shared.Win32;
 using SharpDX;
 using SharpDX.Direct3D11;
 using SharpDX.DXGI;
@@ -37,14 +37,14 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using Remotely.Shared;
-using Result = Remotely.Shared.Result;
+using SODesk.Shared;
+using Result = SODesk.Shared.Result;
 using SkiaSharp;
 using SkiaSharp.Views.Desktop;
-using Remotely.Desktop.Core.Extensions;
+using SODesk.Desktop.Core.Extensions;
 using System.Runtime.InteropServices;
 
-namespace Remotely.Desktop.Win.Services
+namespace SODesk.Desktop.Win.Services
 {
     public class ScreenCapturerWin : IScreenCapturer
     {

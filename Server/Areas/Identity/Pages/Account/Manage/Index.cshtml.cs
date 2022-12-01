@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Remotely.Shared.Models;
+using SODesk.Shared.Models;
 
-namespace Remotely.Server.Areas.Identity.Pages.Account.Manage
+namespace SODesk.Server.Areas.Identity.Pages.Account.Manage
 {
     public partial class IndexModel : PageModel
     {
-        private readonly UserManager<RemotelyUser> _userManager;
-        private readonly SignInManager<RemotelyUser> _signInManager;
+        private readonly UserManager<SODeskUser> _userManager;
+        private readonly SignInManager<SODeskUser> _signInManager;
 
         public IndexModel(
-            UserManager<RemotelyUser> userManager,
-            SignInManager<RemotelyUser> signInManager)
+            UserManager<SODeskUser> userManager,
+            SignInManager<SODeskUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -38,7 +38,7 @@ namespace Remotely.Server.Areas.Identity.Pages.Account.Manage
             public string PhoneNumber { get; set; }
         }
 
-        private async Task LoadAsync(RemotelyUser user)
+        private async Task LoadAsync(SODeskUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);

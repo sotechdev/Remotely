@@ -1,21 +1,20 @@
-﻿namespace Remotely.Desktop.Core.Services
+﻿namespace Remotely.Desktop.Core.Services;
+
+public interface IWebRtcSessionFactory
 {
-    public interface IWebRtcSessionFactory
+    WebRtcSession GetNewSession(Services.Viewer viewer);
+}
+
+public class WebRtcSessionFactory : IWebRtcSessionFactory
+{
+    public WebRtcSessionFactory(IDtoMessageHandler messageHandler)
     {
-        WebRtcSession GetNewSession(Services.Viewer viewer);
+        MessageHandler = messageHandler;
     }
+    private IDtoMessageHandler MessageHandler { get; }
 
-    public class WebRtcSessionFactory : IWebRtcSessionFactory
+    public WebRtcSession GetNewSession(Services.Viewer viewer)
     {
-        public WebRtcSessionFactory(IDtoMessageHandler messageHandler)
-        {
-            MessageHandler = messageHandler;
-        }
-        private IDtoMessageHandler MessageHandler { get; }
-
-        public WebRtcSession GetNewSession(Services.Viewer viewer)
-        {
-            return new WebRtcSession(viewer, MessageHandler);
-        }
+        return new WebRtcSession(viewer, MessageHandler);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Remotely.Server.Models
+namespace SODesk.Server.Models
 {
     public class Toast
     {

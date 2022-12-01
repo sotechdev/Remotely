@@ -1,4 +1,4 @@
-﻿using Remotely.Shared.Utilities;
+﻿using SODesk.Shared.Utilities;
 using Server.Installer.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Remotely.Shared.Extensions;
+using SODesk.Shared.Extensions;
 
 namespace Server.Installer.Services
 {
@@ -31,15 +31,15 @@ namespace Server.Installer.Services
 
         public async Task PerformInstall(CliParams cliParams)
         {
-            var zipPath = Path.Combine(Path.GetTempPath(), "Remotely_Server.zip");
+            var zipPath = Path.Combine(Path.GetTempPath(), "SODesk_Server.zip");
 
             if (cliParams.UsePrebuiltPackage == true)
             {
                 ConsoleHelper.WriteLine("Downloading pre-built server package.");
 
                 var releaseFile = cliParams.WebServer == WebServerType.IisWindows ?
-                    "https://github.com/immense/Remotely/releases/latest/download/Remotely_Server_Win-x64.zip" :
-                    "https://github.com/immense/Remotely/releases/latest/download/Remotely_Server_Linux-x64.zip";
+                    "https://github.com/immense/SODesk/releases/latest/download/SODesk_Server_Win-x64.zip" :
+                    "https://github.com/immense/SODesk/releases/latest/download/SODesk_Server_Linux-x64.zip";
 
                 using var httpClient = new HttpClient();
                 var response = await httpClient.GetAsync(releaseFile);
@@ -82,7 +82,7 @@ namespace Server.Installer.Services
                     if (!dispatchResult)
                     {
                         ConsoleHelper.WriteError("GitHub API call to trigger build action failed.  Do you have " +
-                            "Actions enabled on your forked Remotely repo on the Actions tab?  If not, enable them and try again. " +
+                            "Actions enabled on your forked SODesk repo on the Actions tab?  If not, enable them and try again. " +
                             "Otherwise, please check your input parameters.");
                         return;
                     }
@@ -119,8 +119,8 @@ namespace Server.Installer.Services
                 var w3wpProcs = Process.GetProcessesByName("w3wp");
                 if (w3wpProcs.Length > 0)
                 {
-                    Process.Start("powershell.exe", "-Command & \"{ Stop-WebAppPool -Name Remotely -ErrorAction SilentlyContinue }\"").WaitForExit();
-                    Process.Start("powershell.exe", "-Command & \"{ Stop-Website -Name Remotely -ErrorAction SilentlyContinue }\"").WaitForExit();
+                    Process.Start("powershell.exe", "-Command & \"{ Stop-WebAppPool -Name SODesk -ErrorAction SilentlyContinue }\"").WaitForExit();
+                    Process.Start("powershell.exe", "-Command & \"{ Stop-Website -Name SODesk -ErrorAction SilentlyContinue }\"").WaitForExit();
 
                     ConsoleHelper.WriteLine("Waiting for w3wp processes to close...");
                     foreach (var proc in w3wpProcs)
@@ -143,7 +143,7 @@ namespace Server.Installer.Services
         private async Task LaunchExternalInstaller(CliParams cliParams)
         {
             ConsoleHelper.WriteLine("Launching install script for selected reverse proxy type.");
-            var resourcesPath = "Remotely.Server.Installer.Resources.";
+            var resourcesPath = "SODesk.Server.Installer.Resources.";
 
             var fileName = cliParams.WebServer.Value switch
             {
@@ -171,7 +171,7 @@ namespace Server.Installer.Services
             {
                 psi = new ProcessStartInfo("powershell.exe")
                 {
-                    Arguments = $"-f \"{filePath}\" -AppPoolName Remotely -SiteName Remotely " +
+                    Arguments = $"-f \"{filePath}\" -AppPoolName SODesk -SiteName SODesk " +
                         $"-SitePath \"{cliParams.InstallDirectory}\" -HostName {cliParams.ServerUrl.Authority} -Quiet",
                     WorkingDirectory = cliParams.InstallDirectory
                 };

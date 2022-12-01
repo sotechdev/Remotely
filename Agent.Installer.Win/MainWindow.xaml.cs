@@ -1,11 +1,11 @@
-﻿using Remotely.Agent.Installer.Win.Utilities;
-using Remotely.Agent.Installer.Win.ViewModels;
+﻿using SODesk.Agent.Installer.Win.Utilities;
+using SODesk.Agent.Installer.Win.ViewModels;
 using System;
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Input;
 
-namespace Remotely.Agent.Installer.Win
+namespace SODesk.Agent.Installer.Win
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -46,7 +46,7 @@ namespace Remotely.Agent.Installer.Win
         private void ShowServerUrlHelp(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(
-                "This is the URL of the Remotely server that you're hosting.  The device will connect to this URL.", 
+                "This is the URL of the SODesk server that you're hosting.  The device will connect to this URL.", 
                 "Server URL", 
                 MessageBoxButton.OK, 
                 MessageBoxImage.Information);
@@ -55,7 +55,7 @@ namespace Remotely.Agent.Installer.Win
         private void ShowOrganizationIdHelp(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(
-                "This is your organization ID on the Remotely server.  Since Remotely supports multi-tenancy, " +
+                "This is your organization ID on the SODesk server.  Since SODesk supports multi-tenancy, " +
                 "this ID needs to be provided to determine who should have access." 
                 + Environment.NewLine + Environment.NewLine +
                 "You can find this ID on the Organization tab on the web app.", 

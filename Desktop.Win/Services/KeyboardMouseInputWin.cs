@@ -1,16 +1,16 @@
-﻿using Remotely.Desktop.Core.Enums;
-using Remotely.Desktop.Core.Interfaces;
-using Remotely.Desktop.Core.Services;
-using Remotely.Shared.Utilities;
-using Remotely.Shared.Win32;
+﻿using SODesk.Desktop.Core.Enums;
+using SODesk.Desktop.Core.Interfaces;
+using SODesk.Desktop.Core.Services;
+using SODesk.Shared.Utilities;
+using SODesk.Shared.Win32;
 using System;
 using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Remotely.Shared.Win32.User32;
+using static SODesk.Shared.Win32.User32;
 
-namespace Remotely.Desktop.Win.Services
+namespace SODesk.Desktop.Win.Services
 {
     public class KeyboardMouseInputWin : IKeyboardMouseInput
     {

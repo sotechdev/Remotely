@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
-namespace Remotely.Shared.Utilities
+namespace SODesk.Shared.Utilities
 {
     public static class Debouncer
     {

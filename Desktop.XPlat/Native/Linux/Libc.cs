@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Remotely.Desktop.XPlat.Native.Linux
+namespace SODesk.Desktop.XPlat.Native.Linux
 {
     public class Libc
     {

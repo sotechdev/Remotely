@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Remotely.Server.Auth;
-using Remotely.Server.Services;
-using Remotely.Shared.Models;
+using SODesk.Server.Auth;
+using SODesk.Server.Services;
+using SODesk.Shared.Models;
 using System;
 using System.IO;
 using System.Net;
@@ -10,7 +10,7 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.API
+namespace SODesk.Server.API
 {
     [Route("api/[controller]")]
     [ApiController]

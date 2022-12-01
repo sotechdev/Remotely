@@ -5,18 +5,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Remotely.Server.Data;
-using Remotely.Server.Models;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Models;
-using Remotely.Shared.Utilities;
-using Remotely.Shared.ViewModels;
+using SODesk.Server.Data;
+using SODesk.Server.Models;
+using SODesk.Shared.Enums;
+using SODesk.Shared.Models;
+using SODesk.Shared.Utilities;
+using SODesk.Shared.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.Services
+namespace SODesk.Server.Services
 {
     // TODO: Separate this into domain-specific services.
     public interface IDataService
@@ -79,11 +79,11 @@ namespace Remotely.Server.Services
 
         bool DoesUserExist(string userName);
 
-        bool DoesUserHaveAccessToDevice(string deviceID, RemotelyUser remotelyUser);
+        bool DoesUserHaveAccessToDevice(string deviceID, SODeskUser remotelyUser);
 
         bool DoesUserHaveAccessToDevice(string deviceID, string remotelyUserID);
 
-        string[] FilterDeviceIDsByUserPermission(string[] deviceIDs, RemotelyUser remotelyUser);
+        string[] FilterDeviceIDsByUserPermission(string[] deviceIDs, SODeskUser remotelyUser);
 
         string[] FilterUsersByDevicePermission(IEnumerable<string> userIDs, string deviceID);
 
@@ -107,9 +107,9 @@ namespace Remotely.Server.Services
 
         ScriptResult[] GetAllScriptResultsForUser(string orgId, string userName);
 
-        RemotelyUser[] GetAllUsersForServer();
+        SODeskUser[] GetAllUsersForServer();
 
-        Task<RemotelyUser[]> GetAllUsersInOrganization(string orgId);
+        Task<SODeskUser[]> GetAllUsersInOrganization(string orgId);
 
         ApiToken GetApiKey(string keyId);
 
@@ -125,7 +125,7 @@ namespace Remotely.Server.Services
 
         int GetDeviceCount();
 
-        int GetDeviceCount(RemotelyUser user);
+        int GetDeviceCount(SODeskUser user);
 
         Task<DeviceGroup> GetDeviceGroup(string deviceGroupID);
         DeviceGroup[] GetDeviceGroups(string username);
@@ -174,13 +174,13 @@ namespace Remotely.Server.Services
 
         int GetTotalDevices();
 
-        Task<RemotelyUser> GetUserAsync(string username);
+        Task<SODeskUser> GetUserAsync(string username);
 
-        RemotelyUser GetUserByID(string userID);
+        SODeskUser GetUserByID(string userID);
 
-        RemotelyUser GetUserByNameWithOrg(string userName);
+        SODeskUser GetUserByNameWithOrg(string userName);
 
-        RemotelyUserOptions GetUserOptions(string userName);
+        SODeskUserOptions GetUserOptions(string userName);
 
         bool JoinViaInvitation(string userName, string inviteID);
 
@@ -196,7 +196,7 @@ namespace Remotely.Server.Services
 
         void SetAllDevicesNotOnline();
 
-        Task SetDisplayName(RemotelyUser user, string displayName);
+        Task SetDisplayName(SODeskUser user, string displayName);
 
         Task SetIsDefaultOrganization(string orgID, bool isDefault);
 
@@ -222,7 +222,7 @@ namespace Remotely.Server.Services
 
         void UpdateTags(string deviceID, string tags);
 
-        void UpdateUserOptions(string userName, RemotelyUserOptions options);
+        void UpdateUserOptions(string userName, SODeskUserOptions options);
 
         bool ValidateApiKey(string keyId, string apiSecret, string requestPath, string remoteIP);
 
@@ -743,19 +743,19 @@ namespace Remotely.Server.Services
 
             try
             {
-                var user = new RemotelyUser()
+                var user = new SODeskUser()
                 {
                     UserName = userEmail.Trim().ToLower(),
                     Email = userEmail.Trim().ToLower(),
                     IsAdministrator = isAdmin,
                     OrganizationID = organizationID,
-                    UserOptions = new RemotelyUserOptions()
+                    UserOptions = new SODeskUserOptions()
                 };
                 var org = dbContext.Organizations
-                    .Include(x => x.RemotelyUsers)
+                    .Include(x => x.SODeskUsers)
                     .FirstOrDefault(x => x.ID == organizationID);
                 dbContext.Users.Add(user);
-                org.RemotelyUsers.Add(user);
+                org.SODeskUsers.Add(user);
                 await dbContext.SaveChangesAsync();
                 return true;
             }
@@ -914,9 +914,9 @@ namespace Remotely.Server.Services
 
             dbContext
                 .Organizations
-                .Include(x => x.RemotelyUsers)
+                .Include(x => x.SODeskUsers)
                 .FirstOrDefault(x => x.ID == orgID)
-                .RemotelyUsers.Remove(target);
+                .SODeskUsers.Remove(target);
 
             dbContext.Users.Remove(target);
 
@@ -954,7 +954,7 @@ namespace Remotely.Server.Services
             return dbContext.Users.Any(x => x.UserName.Trim().ToLower() == userName.Trim().ToLower());
         }
 
-        public bool DoesUserHaveAccessToDevice(string deviceID, RemotelyUser remotelyUser)
+        public bool DoesUserHaveAccessToDevice(string deviceID, SODeskUser remotelyUser)
         {
             if (remotelyUser is null)
             {
@@ -984,7 +984,7 @@ namespace Remotely.Server.Services
             return DoesUserHaveAccessToDevice(deviceID, remotelyUser);
         }
 
-        public string[] FilterDeviceIDsByUserPermission(string[] deviceIDs, RemotelyUser remotelyUser)
+        public string[] FilterDeviceIDsByUserPermission(string[] deviceIDs, SODeskUser remotelyUser)
         {
             using var dbContext = _appDbFactory.GetContext();
 
@@ -1112,27 +1112,27 @@ namespace Remotely.Server.Services
                 .ToArray();
         }
 
-        public RemotelyUser[] GetAllUsersForServer()
+        public SODeskUser[] GetAllUsersForServer()
         {
             using var dbContext = _appDbFactory.GetContext();
 
             return dbContext.Users.ToArray();
         }
 
-        public async Task<RemotelyUser[]> GetAllUsersInOrganization(string orgId)
+        public async Task<SODeskUser[]> GetAllUsersInOrganization(string orgId)
         {
             if (string.IsNullOrWhiteSpace(orgId))
             {
-                return Array.Empty<RemotelyUser>();
+                return Array.Empty<SODeskUser>();
             }
 
             using var dbContext = _appDbFactory.GetContext();
 
             var organization = await dbContext.Organizations
-                .Include(x => x.RemotelyUsers)
+                .Include(x => x.SODeskUsers)
                 .FirstOrDefaultAsync(x => x.ID == orgId);
 
-            return organization.RemotelyUsers.ToArray();
+            return organization.SODeskUsers.ToArray();
         }
 
         public ApiToken GetApiKey(string keyId)
@@ -1215,7 +1215,7 @@ namespace Remotely.Server.Services
             return dbContext.Devices.Count();
         }
 
-        public int GetDeviceCount(RemotelyUser user)
+        public int GetDeviceCount(SODeskUser user)
         {
             using var dbContext = _appDbFactory.GetContext();
 
@@ -1573,7 +1573,7 @@ namespace Remotely.Server.Services
             return dbContext.Devices.Count();
         }
 
-        public async Task<RemotelyUser> GetUserAsync(string username)
+        public async Task<SODeskUser> GetUserAsync(string username)
         {
             if (string.IsNullOrWhiteSpace(username))
             {
@@ -1584,7 +1584,7 @@ namespace Remotely.Server.Services
             return await dbContext.Users.FirstOrDefaultAsync(x => x.UserName == username);
         }
 
-        public RemotelyUser GetUserByID(string userID)
+        public SODeskUser GetUserByID(string userID)
         {
             if (string.IsNullOrWhiteSpace(userID))
             {
@@ -1595,7 +1595,7 @@ namespace Remotely.Server.Services
             return dbContext.Users.FirstOrDefault(x => x.Id == userID);
         }
 
-        public RemotelyUser GetUserByNameWithOrg(string userName)
+        public SODeskUser GetUserByNameWithOrg(string userName)
         {
             if (userName == null)
             {
@@ -1609,7 +1609,7 @@ namespace Remotely.Server.Services
                 .FirstOrDefault(x => x.UserName.ToLower().Trim() == userName.ToLower().Trim());
         }
 
-        public RemotelyUserOptions GetUserOptions(string userName)
+        public SODeskUserOptions GetUserOptions(string userName)
         {
             using var dbContext = _appDbFactory.GetContext();
 
@@ -1633,13 +1633,13 @@ namespace Remotely.Server.Services
 
             var user = dbContext.Users.FirstOrDefault(x => x.UserName == userName);
             var organization = dbContext.Organizations
-                                .Include(x => x.RemotelyUsers)
+                                .Include(x => x.SODeskUsers)
                                 .FirstOrDefault(x => x.ID == invite.OrganizationID);
 
             user.Organization = organization;
             user.OrganizationID = organization.ID;
             user.IsAdministrator = invite.IsAdmin;
-            organization.RemotelyUsers.Add(user);
+            organization.SODeskUsers.Add(user);
 
             dbContext.SaveChanges();
 
@@ -1749,7 +1749,7 @@ namespace Remotely.Server.Services
             dbContext.SaveChanges();
         }
 
-        public async Task SetDisplayName(RemotelyUser user, string displayName)
+        public async Task SetDisplayName(SODeskUser user, string displayName)
         {
             using var dbContext = _appDbFactory.GetContext();
 
@@ -1961,7 +1961,7 @@ namespace Remotely.Server.Services
             dbContext.SaveChanges();
         }
 
-        public void UpdateUserOptions(string userName, RemotelyUserOptions options)
+        public void UpdateUserOptions(string userName, SODeskUserOptions options)
         {
             using var dbContext = _appDbFactory.GetContext();
 
@@ -1973,7 +1973,7 @@ namespace Remotely.Server.Services
         {
             using var dbContext = _appDbFactory.GetContext();
 
-            var hasher = new PasswordHasher<RemotelyUser>();
+            var hasher = new PasswordHasher<SODeskUser>();
             var token = dbContext.ApiTokens.FirstOrDefault(x => x.ID == keyId);
 
             var isValid = token is not null &&

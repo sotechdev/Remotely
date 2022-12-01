@@ -8,16 +8,16 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using Remotely.Shared.Models;
+using SODesk.Shared.Models;
 
-namespace Remotely.Server.Areas.Identity.Pages.Account
+namespace SODesk.Server.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class ConfirmEmailModel : PageModel
     {
-        private readonly UserManager<RemotelyUser> _userManager;
+        private readonly UserManager<SODeskUser> _userManager;
 
-        public ConfirmEmailModel(UserManager<RemotelyUser> userManager)
+        public ConfirmEmailModel(UserManager<SODeskUser> userManager)
         {
             _userManager = userManager;
         }

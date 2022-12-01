@@ -5,18 +5,18 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Remotely.Desktop.Core;
-using Remotely.Desktop.Core.Interfaces;
-using Remotely.Desktop.Core.Services;
-using Remotely.Desktop.XPlat.Services;
-using Remotely.Desktop.XPlat.Views;
-using Remotely.Shared.Utilities;
+using SODesk.Desktop.Core;
+using SODesk.Desktop.Core.Interfaces;
+using SODesk.Desktop.Core.Services;
+using SODesk.Desktop.XPlat.Services;
+using SODesk.Desktop.XPlat.Views;
+using SODesk.Shared.Utilities;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Remotely.Desktop.XPlat
+namespace SODesk.Desktop.XPlat
 {
     public class App : Application
     {

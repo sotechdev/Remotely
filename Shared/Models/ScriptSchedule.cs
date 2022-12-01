@@ -1,5 +1,5 @@
-﻿using Remotely.Shared.Enums;
-using Remotely.Shared.Utilities;
+﻿using SODesk.Shared.Enums;
+using SODesk.Shared.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,14 +9,14 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Remotely.Shared.Models
+namespace SODesk.Shared.Models
 {
     public class ScriptSchedule
     {
         public DateTimeOffset CreatedAt { get; set; }
 
         [JsonIgnore]
-        public RemotelyUser Creator { get; set; }
+        public SODeskUser Creator { get; set; }
 
         public string CreatorId { get; set; }
 

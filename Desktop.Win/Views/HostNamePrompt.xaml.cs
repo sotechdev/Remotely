@@ -1,7 +1,7 @@
-﻿using Remotely.Desktop.Win.ViewModels;
+﻿using SODesk.Desktop.Win.ViewModels;
 using System.Windows;
 
-namespace Remotely.Desktop.Win.Views
+namespace SODesk.Desktop.Win.Views
 {
     /// <summary>
     /// Interaction logic for HostNamePrompt.xaml

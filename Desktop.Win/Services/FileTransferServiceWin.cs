@@ -1,9 +1,9 @@
-﻿using Remotely.Desktop.Core.Interfaces;
-using Remotely.Desktop.Core.Services;
-using Remotely.Desktop.Core.ViewModels;
-using Remotely.Desktop.Win.ViewModels;
-using Remotely.Desktop.Win.Views;
-using Remotely.Shared.Utilities;
+﻿using SODesk.Desktop.Core.Interfaces;
+using SODesk.Desktop.Core.Services;
+using SODesk.Desktop.Core.ViewModels;
+using SODesk.Desktop.Win.ViewModels;
+using SODesk.Desktop.Win.Views;
+using SODesk.Shared.Utilities;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Remotely.Desktop.Win.Services
+namespace SODesk.Desktop.Win.Services
 {
     public class FileTransferServiceWin : IFileTransferService
     {
@@ -31,7 +31,7 @@ namespace Remotely.Desktop.Win.Services
         public string GetBaseDirectory()
         {
             var programDataPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
-            return Directory.CreateDirectory(Path.Combine(programDataPath, "Remotely", "Shared")).FullName;
+            return Directory.CreateDirectory(Path.Combine(programDataPath, "SODesk", "Shared")).FullName;
         }
 
         public void OpenFileTransferWindow(Viewer viewer)

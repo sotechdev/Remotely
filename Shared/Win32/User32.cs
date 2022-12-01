@@ -3,7 +3,7 @@ using System;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 
-namespace Remotely.Shared.Win32
+namespace SODesk.Shared.Win32
 {
     public static class User32
     {

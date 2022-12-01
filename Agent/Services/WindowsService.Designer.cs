@@ -1,4 +1,4 @@
-﻿namespace Remotely.Agent.Services
+﻿namespace SODesk.Agent.Services
 {
     partial class WindowsService
     {

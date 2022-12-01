@@ -1,6 +1,6 @@
-﻿using Remotely.Desktop.Core.ViewModels;
+﻿using SODesk.Desktop.Core.ViewModels;
 
-namespace Remotely.Desktop.Win.ViewModels
+namespace SODesk.Desktop.Win.ViewModels
 {
     public class HostNamePromptViewModel : BrandedViewModelBase
     {

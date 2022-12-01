@@ -6,7 +6,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Remotely.Shared.Services
+namespace SODesk.Shared.Services
 {
     public class ElevationDetectorWin : IElevationDetector
     {

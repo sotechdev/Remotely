@@ -12,7 +12,7 @@ for (( i=0; i<${ArgLength}; i+=2 ));
 do
     if [ "${Args[$i]}" = "--uninstall" ]; then
         launchctl unload -w /Library/LaunchDaemons/remotely-agent.plist
-        rm -r -f /usr/local/bin/Remotely/
+        rm -r -f /usr/local/bin/SODesk/
         rm -f /Library/LaunchDaemons/remotely-agent.plist
         exit
     elif [ "${Args[$i]}" = "--path" ]; then
@@ -36,31 +36,31 @@ su - $SUDO_USER -c "brew install curl"
 su - $SUDO_USER -c "brew install jq"
 
 
-if [ -f "/usr/local/bin/Remotely/ConnectionInfo.json" ]; then
-    SavedGUID=`cat "/usr/local/bin/Remotely/ConnectionInfo.json" | jq -r '.DeviceID'`
+if [ -f "/usr/local/bin/SODesk/ConnectionInfo.json" ]; then
+    SavedGUID=`cat "/usr/local/bin/SODesk/ConnectionInfo.json" | jq -r '.DeviceID'`
     if [[ "$SavedGUID" != "null" && -n "$SavedGUID" ]]; then
         GUID="$SavedGUID"
     fi
 fi
 
-rm -r -f /Applications/Remotely
+rm -r -f /Applications/SODesk
 rm -f /Library/LaunchDaemons/remotely-agent.plist
 
-mkdir -p /usr/local/bin/Remotely/
-chmod -R 755 /usr/local/bin/Remotely/
-cd /usr/local/bin/Remotely/
+mkdir -p /usr/local/bin/SODesk/
+chmod -R 755 /usr/local/bin/SODesk/
+cd /usr/local/bin/SODesk/
 
 if [ -z "$UpdatePackagePath" ]; then
-    echo  "Downloading client..." >> /tmp/Remotely_Install.log
-    curl $HostName/Content/Remotely-MacOS-arm64.zip --output /usr/local/bin/Remotely/Remotely-MacOS-arm64.zip
+    echo  "Downloading client..." >> /tmp/SODesk_Install.log
+    curl $HostName/Content/SODesk-MacOS-arm64.zip --output /usr/local/bin/SODesk/SODesk-MacOS-arm64.zip
 else
-    echo  "Copying install files..." >> /tmp/Remotely_Install.log
-    cp "$UpdatePackagePath" /usr/local/bin/Remotely/Remotely-MacOS-arm64.zip
+    echo  "Copying install files..." >> /tmp/SODesk_Install.log
+    cp "$UpdatePackagePath" /usr/local/bin/SODesk/SODesk-MacOS-arm64.zip
     rm -f "$UpdatePackagePath"
 fi
 
-unzip -o ./Remotely-MacOS-arm64.zip
-rm -f ./Remotely-MacOS-arm64.zip
+unzip -o ./SODesk-MacOS-arm64.zip
+rm -f ./SODesk-MacOS-arm64.zip
 
 
 connectionInfo="{
@@ -72,7 +72,7 @@ connectionInfo="{
 
 echo "$connectionInfo" > ./ConnectionInfo.json
 
-curl --head $HostName/Content/Remotely-MacOS-arm64.zip | grep -i "etag" | cut -d' ' -f 2 > ./etag.txt
+curl --head $HostName/Content/SODesk-MacOS-arm64.zip | grep -i "etag" | cut -d' ' -f 2 > ./etag.txt
 
 
 plistFile="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
@@ -84,7 +84,7 @@ plistFile="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
     <key>ProgramArguments</key>
     <array>
         <string>/usr/local/bin/dotnet</string>
-        <string>/usr/local/bin/Remotely/Remotely_Agent.dll</string>
+        <string>/usr/local/bin/SODesk/SODesk_Agent.dll</string>
     </array>
     <key>KeepAlive</key>
     <true/>

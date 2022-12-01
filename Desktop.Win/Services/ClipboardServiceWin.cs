@@ -1,12 +1,12 @@
-﻿using Remotely.Desktop.Core.Interfaces;
-using Remotely.Shared.Utilities;
-using Remotely.Shared.Win32;
+﻿using SODesk.Desktop.Core.Interfaces;
+using SODesk.Shared.Utilities;
+using SODesk.Shared.Win32;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Remotely.Desktop.Win.Services
+namespace SODesk.Desktop.Win.Services
 {
     public class ClipboardServiceWin : IClipboardService
     {

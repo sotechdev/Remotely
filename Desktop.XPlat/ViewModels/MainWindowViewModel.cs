@@ -3,15 +3,15 @@ using Avalonia.Controls;
 using Avalonia.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using ReactiveUI;
-using Remotely.Desktop.Core;
-using Remotely.Desktop.Core.Interfaces;
-using Remotely.Desktop.Core.Services;
-using Remotely.Desktop.XPlat.Controls;
-using Remotely.Desktop.XPlat.Native.Linux;
-using Remotely.Desktop.XPlat.Services;
-using Remotely.Desktop.XPlat.Views;
-using Remotely.Shared.Models;
-using Remotely.Shared.Utilities;
+using SODesk.Desktop.Core;
+using SODesk.Desktop.Core.Interfaces;
+using SODesk.Desktop.Core.Services;
+using SODesk.Desktop.XPlat.Controls;
+using SODesk.Desktop.XPlat.Native.Linux;
+using SODesk.Desktop.XPlat.Services;
+using SODesk.Desktop.XPlat.Views;
+using SODesk.Shared.Models;
+using SODesk.Shared.Utilities;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -19,7 +19,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Remotely.Desktop.XPlat.ViewModels
+namespace SODesk.Desktop.XPlat.ViewModels
 {
     public class MainWindowViewModel : BrandedViewModelBase
     {

@@ -1,10 +1,9 @@
 ﻿using System;
 
-namespace Remotely.Desktop.Core.Interfaces
+namespace Remotely.Desktop.Core.Interfaces;
+
+public interface IAudioCapturer
 {
-    public interface IAudioCapturer
-    {
-        event EventHandler<byte[]> AudioSampleReady;
-        void ToggleAudio(bool toggleOn);
-    }
+    event EventHandler<byte[]> AudioSampleReady;
+    void ToggleAudio(bool toggleOn);
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Remotely.Shared.ViewModels
+namespace SODesk.Shared.ViewModels
 {
     public class ChatSession
     {

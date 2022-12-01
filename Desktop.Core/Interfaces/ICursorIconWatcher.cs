@@ -1,13 +1,12 @@
 ﻿using Remotely.Shared.Models;
+
 using System;
 
-namespace Remotely.Desktop.Core.Interfaces
+namespace Remotely.Desktop.Core.Interfaces;
+
+public interface ICursorIconWatcher
 {
-    public interface ICursorIconWatcher
-    {
-        event EventHandler<CursorInfo> OnChange;
+    event EventHandler<CursorInfo> OnChange;
 
-        CursorInfo GetCurrentCursor();
-    }
-
+    CursorInfo GetCurrentCursor();
 }

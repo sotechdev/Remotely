@@ -1,12 +1,12 @@
-﻿using Remotely.Desktop.Core.ViewModels;
-using Remotely.Desktop.Win.Services;
+﻿using SODesk.Desktop.Core.ViewModels;
+using SODesk.Desktop.Win.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Remotely.Desktop.Win.ViewModels
+namespace SODesk.Desktop.Win.ViewModels
 {
     public class PromptForAccessWindowViewModel : BrandedViewModelBase
     {

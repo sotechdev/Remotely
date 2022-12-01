@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Remotely.Server.Services;
+using SODesk.Server.Services;
 using System;
 using System.Net;
 using System.Text;
 
-namespace Remotely.Server.Auth
+namespace SODesk.Server.Auth
 {
     public class ApiAuthorizationFilter : ActionFilterAttribute, IAuthorizationFilter
     {

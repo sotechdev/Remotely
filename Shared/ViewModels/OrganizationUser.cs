@@ -1,4 +1,4 @@
-﻿namespace Remotely.Shared.ViewModels
+﻿namespace SODesk.Shared.ViewModels
 {
     public class OrganizationUser
     {

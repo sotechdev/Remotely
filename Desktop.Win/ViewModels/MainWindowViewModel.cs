@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Remotely.Desktop.Core;
-using Remotely.Desktop.Core.Interfaces;
-using Remotely.Desktop.Core.Services;
-using Remotely.Desktop.Win.Services;
-using Remotely.Desktop.Win.Views;
-using Remotely.Shared.Models;
-using Remotely.Shared.Utilities;
-using Remotely.Shared.Win32;
+using SODesk.Desktop.Core;
+using SODesk.Desktop.Core.Interfaces;
+using SODesk.Desktop.Core.Services;
+using SODesk.Desktop.Win.Services;
+using SODesk.Desktop.Win.Views;
+using SODesk.Shared.Models;
+using SODesk.Shared.Utilities;
+using SODesk.Shared.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Remotely.Desktop.Win.ViewModels
+namespace SODesk.Desktop.Win.ViewModels
 {
     public class MainWindowViewModel : BrandedViewModelBase
     {
@@ -119,11 +119,11 @@ namespace Remotely.Desktop.Win.ViewModels
                         var filePath = sections.First();
                         var arguments = string.Join('"', sections.Skip(1));
                         Logger.Write($"Creating temporary service with file path {filePath} and arguments {arguments}.");
-                        psi.Arguments = $"/c sc create Remotely_Temp binPath=\"{filePath} {arguments} -elevate\"";
+                        psi.Arguments = $"/c sc create SODesk_Temp binPath=\"{filePath} {arguments} -elevate\"";
                         Process.Start(psi).WaitForExit();
-                        psi.Arguments = "/c sc start Remotely_Temp";
+                        psi.Arguments = "/c sc start SODesk_Temp";
                         Process.Start(psi).WaitForExit();
-                        psi.Arguments = "/c sc delete Remotely_Temp";
+                        psi.Arguments = "/c sc delete SODesk_Temp";
                         Process.Start(psi).WaitForExit();
                         App.Current.Shutdown();
                     }

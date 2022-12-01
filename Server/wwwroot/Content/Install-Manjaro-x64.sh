@@ -12,7 +12,7 @@ for (( i=0; i<${ArgLength}; i+=2 ));
 do
     if [ "${Args[$i]}" = "--uninstall" ]; then
         systemctl stop remotely-agent
-        rm -r -f /usr/local/bin/Remotely
+        rm -r -f /usr/local/bin/SODesk
         rm -f /etc/systemd/system/remotely-agent.service
         systemctl daemon-reload
         exit
@@ -32,32 +32,32 @@ pacman -S xclip --noconfirm
 pacman -S jq --noconfirm
 pacman -S curl --noconfirm
 
-if [ -f "/usr/local/bin/Remotely/ConnectionInfo.json" ]; then
-    SavedGUID=`cat "/usr/local/bin/Remotely/ConnectionInfo.json" | jq -r '.DeviceID'`
+if [ -f "/usr/local/bin/SODesk/ConnectionInfo.json" ]; then
+    SavedGUID=`cat "/usr/local/bin/SODesk/ConnectionInfo.json" | jq -r '.DeviceID'`
     if [[ "$SavedGUID" != "null" && -n "$SavedGUID" ]]; then
         GUID="$SavedGUID"
     fi
 fi
 
-rm -r -f /usr/local/bin/Remotely
+rm -r -f /usr/local/bin/SODesk
 rm -f /etc/systemd/system/remotely-agent.service
 
-mkdir -p /usr/local/bin/Remotely/
-cd /usr/local/bin/Remotely/
+mkdir -p /usr/local/bin/SODesk/
+cd /usr/local/bin/SODesk/
 
 if [ -z "$UpdatePackagePath" ]; then
-    echo  "Downloading client..." >> /tmp/Remotely_Install.log
-    wget $HostName/Content/Remotely-Linux.zip
+    echo  "Downloading client..." >> /tmp/SODesk_Install.log
+    wget $HostName/Content/SODesk-Linux.zip
 else
-    echo  "Copying install files..." >> /tmp/Remotely_Install.log
-    cp "$UpdatePackagePath" /usr/local/bin/Remotely/Remotely-Linux.zip
+    echo  "Copying install files..." >> /tmp/SODesk_Install.log
+    cp "$UpdatePackagePath" /usr/local/bin/SODesk/SODesk-Linux.zip
     rm -f "$UpdatePackagePath"
 fi
 
-unzip ./Remotely-Linux.zip
-rm -f ./Remotely-Linux.zip
-chmod +x ./Remotely_Agent
-chmod +x ./Desktop/Remotely_Desktop
+unzip ./SODesk-Linux.zip
+rm -f ./SODesk-Linux.zip
+chmod +x ./SODesk_Agent
+chmod +x ./Desktop/SODesk_Desktop
 
 
 connectionInfo="{
@@ -69,16 +69,16 @@ connectionInfo="{
 
 echo "$connectionInfo" > ./ConnectionInfo.json
 
-curl --head $HostName/Content/Remotely-Linux.zip | grep -i "etag" | cut -d' ' -f 2 > ./etag.txt
+curl --head $HostName/Content/SODesk-Linux.zip | grep -i "etag" | cut -d' ' -f 2 > ./etag.txt
 
-echo Creating service... >> /tmp/Remotely_Install.log
+echo Creating service... >> /tmp/SODesk_Install.log
 
 serviceConfig="[Unit]
-Description=The Remotely agent used for remote access.
+Description=The SODesk agent used for remote access.
 
 [Service]
-WorkingDirectory=/usr/local/bin/Remotely/
-ExecStart=/usr/local/bin/Remotely/Remotely_Agent
+WorkingDirectory=/usr/local/bin/SODesk/
+ExecStart=/usr/local/bin/SODesk/SODesk_Agent
 Restart=always
 StartLimitIntervalSec=0
 RestartSec=10
@@ -91,4 +91,4 @@ echo "$serviceConfig" > /etc/systemd/system/remotely-agent.service
 systemctl enable remotely-agent
 systemctl restart remotely-agent
 
-echo Install complete. >> /tmp/Remotely_Install.log
+echo Install complete. >> /tmp/SODesk_Install.log

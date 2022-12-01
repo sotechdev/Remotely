@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Remotely.Agent.Installer.Win
+namespace SODesk.Agent.Installer.Win
 {
     /// <summary>
     /// Interaction logic for App.xaml

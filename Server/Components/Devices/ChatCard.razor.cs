@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using Remotely.Server.Hubs;
-using Remotely.Server.Services;
-using Remotely.Shared.Enums;
-using Remotely.Shared.ViewModels;
+using SODesk.Server.Hubs;
+using SODesk.Server.Services;
+using SODesk.Shared.Enums;
+using SODesk.Shared.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.Components.Devices
+namespace SODesk.Server.Components.Devices
 {
     public partial class ChatCard : AuthComponentBase, IDisposable
     {

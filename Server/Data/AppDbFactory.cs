@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Remotely.Server.Services;
+using SODesk.Server.Services;
 using System;
 
-namespace Remotely.Server.Data
+namespace SODesk.Server.Data
 {
     public interface IAppDbFactory
     {

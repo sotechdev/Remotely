@@ -1,7 +1,6 @@
-﻿namespace Remotely.Desktop.Core.Interfaces
+﻿namespace Remotely.Desktop.Core.Interfaces;
+
+public interface ISessionIndicator
 {
-    public interface ISessionIndicator
-    {
-        void Show();
-    }
+    void Show();
 }

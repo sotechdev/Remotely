@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Remotely.Desktop.Core;
-using Remotely.Desktop.Core.Interfaces;
-using Remotely.Desktop.Core.Services;
-using Remotely.Desktop.Core.Utilities;
-using Remotely.Shared.Utilities;
+using SODesk.Desktop.Core;
+using SODesk.Desktop.Core.Interfaces;
+using SODesk.Desktop.Core.Services;
+using SODesk.Desktop.Core.Utilities;
+using SODesk.Shared.Utilities;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 
-namespace Remotely.Desktop.Win.Services
+namespace SODesk.Desktop.Win.Services
 {
     public class SessionIndicatorWin : ISessionIndicator
     {

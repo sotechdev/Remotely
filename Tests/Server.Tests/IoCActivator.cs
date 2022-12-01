@@ -7,16 +7,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Primitives;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Remotely.Server.API;
-using Remotely.Server.Data;
-using Remotely.Server.Services;
-using Remotely.Shared.Models;
-using Remotely.Shared.Utilities;
+using SODesk.Server.API;
+using SODesk.Server.Data;
+using SODesk.Server.Services;
+using SODesk.Shared.Models;
+using SODesk.Shared.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 
-namespace Remotely.Tests
+namespace SODesk.Tests
 {
     [TestClass]
     public class IoCActivator
@@ -57,7 +57,7 @@ namespace Remotely.Tests
         {
             services.AddDbContext<AppDb, TestingDbContext>();
 
-            services.AddIdentity<RemotelyUser, IdentityRole>(options => options.Stores.MaxLengthForKeys = 128)
+            services.AddIdentity<SODeskUser, IdentityRole>(options => options.Stores.MaxLengthForKeys = 128)
              .AddEntityFrameworkStores<AppDb>()
              .AddDefaultUI()
              .AddDefaultTokenProviders();

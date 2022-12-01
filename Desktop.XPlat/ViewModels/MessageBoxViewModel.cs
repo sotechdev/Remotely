@@ -1,10 +1,10 @@
 ﻿using Avalonia.Controls;
 using ReactiveUI;
-using Remotely.Desktop.XPlat.Controls;
-using Remotely.Desktop.XPlat.Services;
+using SODesk.Desktop.XPlat.Controls;
+using SODesk.Desktop.XPlat.Services;
 using System.Windows.Input;
 
-namespace Remotely.Desktop.XPlat.ViewModels
+namespace SODesk.Desktop.XPlat.ViewModels
 {
     public class MessageBoxViewModel : BrandedViewModelBase
     {

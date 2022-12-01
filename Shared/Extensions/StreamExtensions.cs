@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Remotely.Shared.Extensions
+namespace SODesk.Shared.Extensions
 {
     public static class StreamExtensions
     {

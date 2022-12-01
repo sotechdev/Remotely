@@ -1,19 +1,19 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using Remotely.Server.Hubs;
-using Remotely.Server.Services;
-using Remotely.Shared.Utilities;
-using Remotely.Shared.Models;
+using SODesk.Server.Hubs;
+using SODesk.Server.Services;
+using SODesk.Shared.Utilities;
+using SODesk.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Remotely.Shared.Enums;
-using Remotely.Server.Auth;
+using SODesk.Shared.Enums;
+using SODesk.Server.Auth;
 
-namespace Remotely.Server.API
+namespace SODesk.Server.API
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -25,9 +25,9 @@ namespace Remotely.Server.API
 
         private readonly IExpiringTokenService _expiringTokenService;
 
-        private readonly UserManager<RemotelyUser> _userManager;
+        private readonly UserManager<SODeskUser> _userManager;
 
-        public ScriptingController(UserManager<RemotelyUser> userManager,
+        public ScriptingController(UserManager<SODeskUser> userManager,
                                             IDataService dataService,
             IExpiringTokenService expiringTokenService,
             IHubContext<AgentHub> agentHub)

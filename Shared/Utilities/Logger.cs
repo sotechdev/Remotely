@@ -1,5 +1,5 @@
-﻿using Remotely.Shared.Enums;
-using Remotely.Shared.Utilities;
+﻿using SODesk.Shared.Enums;
+using SODesk.Shared.Utilities;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -9,11 +9,11 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Remotely.Shared.Utilities
+namespace SODesk.Shared.Utilities
 {
     public static class Logger
     {
-        private static string LogPath => Path.Combine(Path.GetTempPath(), "Remotely_Logs.log");
+        private static string LogPath => Path.Combine(Path.GetTempPath(), "SODesk_Logs.log");
         private static SemaphoreSlim WriteLock { get; } = new(1, 1);
         public static void Debug(string message, [CallerMemberName] string callerName = "")
         {

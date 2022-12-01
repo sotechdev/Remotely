@@ -3,7 +3,7 @@
 echo "Entered main script."
 
 ServerDir=/var/www/remotely
-RemotelyData=/remotely-data
+SODeskData=/remotely-data
 
 AppSettingsVolume=/remotely-data/appsettings.json
 AppSettingsWww=/var/www/remotely/appsettings.json
@@ -19,5 +19,5 @@ fi
 
 ln -s "$AppSettingsVolume" "$AppSettingsWww"
 
-echo "Starting Remotely server."
-exec /usr/bin/dotnet /var/www/remotely/Remotely_Server.dll
+echo "Starting SODesk server."
+exec /usr/bin/dotnet /var/www/remotely/SODesk_Server.dll

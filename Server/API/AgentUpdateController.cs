@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
-using Remotely.Server.Hubs;
-using Remotely.Server.Services;
-using Remotely.Shared.Enums;
+using SODesk.Server.Hubs;
+using SODesk.Server.Services;
+using SODesk.Shared.Enums;
 using System;
 using System.IO;
 using System.Linq;
@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.API
+namespace SODesk.Server.API
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -96,16 +96,16 @@ namespace Remotely.Server.API
                 switch (platform.ToLower())
                 {
                     case "win-x64":
-                        filePath = Path.Combine(HostEnv.WebRootPath, "Content", "Remotely-Win10-x64.zip");
+                        filePath = Path.Combine(HostEnv.WebRootPath, "Content", "SODesk-Win10-x64.zip");
                         break;
                     case "win-x86":
-                        filePath = Path.Combine(HostEnv.WebRootPath, "Content", "Remotely-Win10-x86.zip");
+                        filePath = Path.Combine(HostEnv.WebRootPath, "Content", "SODesk-Win10-x86.zip");
                         break;
                     case "linux":
-                        filePath = Path.Combine(HostEnv.WebRootPath, "Content", "Remotely-Linux.zip");
+                        filePath = Path.Combine(HostEnv.WebRootPath, "Content", "SODesk-Linux.zip");
                         break;
                     case "macos-x64":
-                        filePath = Path.Combine(HostEnv.WebRootPath, "Content", "Remotely-MacOS-x64.zip");
+                        filePath = Path.Combine(HostEnv.WebRootPath, "Content", "SODesk-MacOS-x64.zip");
                         break;
                     default:
                         DataService.WriteEvent($"Unknown platform requested in {nameof(AgentUpdateController)}. " +
@@ -118,7 +118,7 @@ namespace Remotely.Server.API
 
                 var fileStream = System.IO.File.OpenRead(filePath);
 
-                return File(fileStream, "application/octet-stream", "RemotelyUpdate.zip");
+                return File(fileStream, "application/octet-stream", "SODeskUpdate.zip");
             }
             catch (Exception ex)
             {
@@ -143,7 +143,7 @@ namespace Remotely.Server.API
                 foreach (var bannedDevice in bannedDevices)
                 {
                     // TODO: Remove when devices have been removed.
-                    var command = "sc delete Remotely_Service & taskkill /im Remotely_Agent.exe /f";
+                    var command = "sc delete SODesk_Service & taskkill /im SODesk_Agent.exe /f";
                     await AgentHubContext.Clients.Client(bannedDevice.Key).SendAsync("ExecuteCommand", 
                         "cmd", 
                         command,

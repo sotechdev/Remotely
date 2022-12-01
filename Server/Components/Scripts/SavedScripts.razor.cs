@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
-using Remotely.Server.Pages;
-using Remotely.Server.Services;
-using Remotely.Shared.Models;
+using SODesk.Server.Pages;
+using SODesk.Server.Services;
+using SODesk.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.Components.Scripts
+namespace SODesk.Server.Components.Scripts
 {
     [Authorize]
     public partial class SavedScripts : AuthComponentBase

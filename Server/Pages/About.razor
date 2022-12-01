@@ -1,6 +1,6 @@
 ﻿@page "/about"
 
-<h3>About Remotely</h3>
+<h3>About SODesk</h3>
 
 <p>
     Website: <a href="https://remotely.one">https://remotely.one</a>
@@ -12,9 +12,9 @@
     Open-Source Licenses: <a href="/credits">Credits</a>
 </p>
 <p>
-    Version: @if (System.IO.File.Exists("Remotely_Server.dll"))
+    Version: @if (System.IO.File.Exists("SODesk_Server.dll"))
     {
-        <span>@System.Diagnostics.FileVersionInfo.GetVersionInfo("Remotely_Server.dll").FileVersion.ToString()</span>
+        <span>@System.Diagnostics.FileVersionInfo.GetVersionInfo("SODesk_Server.dll").FileVersion.ToString()</span>
     }
     else
     {
