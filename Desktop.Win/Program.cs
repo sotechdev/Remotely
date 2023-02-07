@@ -1,15 +1,17 @@
-﻿using Immense.RemoteControl.Desktop.Shared.Abstractions;
+﻿using Immense.RemoteControl.Desktop.Shared.Services;
 using Immense.RemoteControl.Desktop.UI.WPF.Services;
-using System.Threading.Tasks;
-using System.Threading;
-using System;
 using Immense.RemoteControl.Desktop.Windows;
-using Remotely.Desktop.Shared.Services;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+
+using Remotely.Desktop.Shared.Services;
 using Remotely.Shared.Services;
-using Immense.RemoteControl.Desktop.Shared.Services;
+
+using System;
 using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
 
 var logger = new FileLogger("Remotely_Desktop", "Program.cs");
 var filePath = Process.GetCurrentProcess()?.MainModule?.FileName;

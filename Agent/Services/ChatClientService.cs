@@ -1,9 +1,11 @@
 ﻿using Immense.RemoteControl.Shared.Models;
+
 using Microsoft.AspNetCore.SignalR.Client;
+
 using Remotely.Agent.Interfaces;
 using Remotely.Agent.Models;
-using Remotely.Shared.Models;
 using Remotely.Shared.Utilities;
+
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -19,7 +21,7 @@ namespace Remotely.Agent.Services
     {
         private readonly IAppLauncher _appLauncher;
         private readonly MemoryCache _chatClients = new("ChatClients");
-        private readonly SemaphoreSlim _messageLock = new(1,1);
+        private readonly SemaphoreSlim _messageLock = new(1, 1);
 
         public ChatClientService(IAppLauncher appLauncher)
         {
