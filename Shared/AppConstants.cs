@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Remotely.Shared
+﻿namespace Remotely.Shared
 {
     public class AppConstants
     {
-        public const string DefaultProductName = "Remotely";
-        public const string DefaultPublisherName = "Immense Networks";
+        public const string DefaultProductName = "SODesk";
+        public const string DefaultPublisherName = "SOTech Sistemas";
         public const int EmbeddedDataBlockLength = 256;
         public const long MaxUploadFileSize = 100_000_000;
         public const double ScriptRunExpirationMinutes = 30;

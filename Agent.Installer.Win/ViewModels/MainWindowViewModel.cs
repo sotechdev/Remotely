@@ -1,7 +1,9 @@
+using Remotely.Agent.Installer.Models;
 using Remotely.Agent.Installer.Win.Models;
 using Remotely.Agent.Installer.Win.Services;
 using Remotely.Agent.Installer.Win.Utilities;
 using Remotely.Shared.Models;
+
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -16,9 +18,6 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Net;
-using Remotely.Shared;
-using Remotely.Agent.Installer.Models;
 
 namespace Remotely.Agent.Installer.Win.ViewModels
 {
@@ -120,7 +119,7 @@ namespace Remotely.Agent.Installer.Win.ViewModels
             {
                 return new RelayCommand(param =>
                 {
-                    
+
                     if (Directory.Exists(Logger.LogsDir))
                     {
                         Process.Start(Logger.LogsDir);

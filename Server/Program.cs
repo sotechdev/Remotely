@@ -1,39 +1,39 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Immense.RemoteControl.Server.Abstractions;
+using Immense.RemoteControl.Server.Extensions;
+
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server.Circuits;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+
 using Npgsql;
+
 using Remotely.Server.Areas.Identity;
 using Remotely.Server.Auth;
 using Remotely.Server.Data;
 using Remotely.Server.Hubs;
 using Remotely.Server.Services;
+using Remotely.Server.Services.RcImplementations;
 using Remotely.Shared.Models;
+using Remotely.Shared.Services;
+
+using System;
 using System.IO;
 using System.Linq;
 using System.Net;
-using Remotely.Shared.Utilities;
-using Immense.RemoteControl.Server.Extensions;
-using Remotely.Server.Services.RcImplementations;
-using Immense.RemoteControl.Server.Abstractions;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Remotely.Shared.Services;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
